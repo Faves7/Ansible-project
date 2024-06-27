@@ -1,0 +1,27 @@
+---
+- name: "Update and upgrade packages"
+  become: true
+  apt:
+    upgrade: 'yes'
+    update_cache: yes
+    autoremove: yes
+    cache_valid_time: 86400 #One day
+
+- name: Crontab - update and upgrade
+  become: true
+  cron:
+    name: "Update and upgrade"
+    minute: "0"
+    hour: "6"
+    user: "pi"
+    job: apt update -q -y && apt upgrade -q -y"
+
+- name: Crontab - update all (pihole included)
+  become: true
+  cron:
+    name: update all
+    minute: "0"
+    hour: "5"
+    user: "pi"
+    job: "/home/pi/Documentos/CronJobs/UpdateAll.updateAll.sh"
+

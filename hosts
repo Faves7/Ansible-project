@@ -1,0 +1,2 @@
+[dns-servers]
+Raspberry-Pi	ansible_host="192.168.1.10"	ansible_ssh_user="pi"

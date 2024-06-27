@@ -1,0 +1,12 @@
+---
+- name: Main
+  hosts: all
+
+  tasks:
+    - name: Update and upgrade
+      ansible.builtin.include_tasks:
+        file: tasks/update.yml
+
+    - name: Test connection
+      ansible.builtin.include_tasks:
+        file: tasks/connection.yml
